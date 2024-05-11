@@ -1,9 +1,9 @@
-class Boar : Animal {
+class Pig : Animal {
     override fun speak(): String {
-        return
+        return "Oink!"
     }
 
     override fun eat(): String {
-        TODO("Not yet implemented")
+        return "Everything excepts hair."
     }
 }
