@@ -1,12 +1,24 @@
 class Student(
     private var firstName: String,
     private var lastName: String,
-    private var id: String,
-    private var grade: Grades
+    private var id: String = generateId(),
+    private var grade: Grades = Grades.DST
 ) {
 
+    constructor(firstName: String, lastName: String, id: String) : this(firstName, lastName, id, Grades.DST)
+    constructor(firstName: String, lastName: String, grade: Grades) : this(firstName, lastName, generateId(), grade)
+
+    init {
+        require(firstName.isNotBlank() && lastName.isNotBlank()) {
+            "The field cannot be empty!"
+        }
+        require(id.isNotBlank()) {
+            "The field cannot be empty!"
+        }
+    }
+
     override fun toString(): String {
-        return "imię: $firstName, nazwisko: $lastName, numer indeksu: $id, ocena: ${grade.description} - ${grade.grade}"
+        return "Imię: $firstName, Nazwisko: $lastName, Numer indeksu: $id, Ocena: ${grade.description} - ${grade.grade}"
     }
 
     fun getGrade(): Grades {
@@ -37,4 +49,13 @@ class Student(
         this.lastName = lastName
 
     }
+    companion object {
+        private var counter: Int = 0
+
+        private fun generateId(): String {
+            counter++
+            return "$counter"
+        }
+    }
+
 }
