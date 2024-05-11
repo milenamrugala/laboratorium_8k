@@ -1,9 +1,9 @@
-class Spider : Animal {
+class Lion : Animal {
     override fun speak(): String {
-        TODO("Not yet implemented")
+        return "Roooar!"
     }
 
     override fun eat(): String {
-        TODO("Not yet implemented")
+        return "Zebra, water buffalo, antelopes."
     }
 }
